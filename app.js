@@ -18,10 +18,20 @@ let concesionaria = {
         }
         return null;
     },
+    
     autosParaLaVenta: function() {
         let autosDisponibles = this.autos.filter( function(estadoDeAuto) {
             return estadoDeAuto.vendido == false;
         });
         return autosDisponibles;
+     },
+
+     autosNuevos: function() {
+        let autosDisponibles = this.autosParaLaVenta()
+        let autos0km = autosDisponibles.filter(function(autos) {
+           return autos.km < 100;
+        });
+        return autos0km;
      }
 }
+module.exports = concesionaria;

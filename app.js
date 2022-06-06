@@ -18,7 +18,7 @@ let concesionaria = {
         }
         return null;
     },
-    
+
     autosParaLaVenta: function() {
         let autosDisponibles = this.autos.filter( function(estadoDeAuto) {
             return estadoDeAuto.vendido == false;
@@ -32,6 +32,17 @@ let concesionaria = {
            return autos.km < 100;
         });
         return autos0km;
+     },
+
+     listaDeVentas: function() {
+        let autosVendidos = this.autos.filter(function(autos) {
+           return autos.vendido == true;
+        });
+        let ganancias = [];
+        autosVendidos.forEach(function(autos) {
+           ganancias.push(autos.precio);
+        })
+        return ganancias;
      }
 }
 module.exports = concesionaria;

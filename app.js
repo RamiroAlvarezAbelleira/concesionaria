@@ -10,12 +10,18 @@ let concesionaria = {
         }
         return null;
     },
-    
+
     venderAuto: function(patente) {
         let autoBuscado = this.buscarAuto(patente)
         if (autoBuscado != null && autoBuscado.vendido ==          false) {
             return autoBuscado.vendido = true;
         }
         return null;
-    }
+    },
+    autosParaLaVenta: function() {
+        let autosDisponibles = this.autos.filter( function(estadoDeAuto) {
+            return estadoDeAuto.vendido == false;
+        });
+        return autosDisponibles;
+     }
 }

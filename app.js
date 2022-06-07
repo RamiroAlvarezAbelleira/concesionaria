@@ -44,13 +44,18 @@ let concesionaria = {
         })
         return ganancias;
      },
-     
+
      totalDeVentas: function() {
         let ganancias = this.listaDeVentas();
         let gananciasTotales = ganancias.reduce(function(valorAnterior, valorActual) {
            return valorAnterior + valorActual;
         }, 0);
         return gananciasTotales;
+     },
+     
+     puedeComprar: function(auto, persona) {
+        let puedeOno = auto.precio <= persona.capacidadDePagoTotal && (auto.precio / auto.cuotas) <= persona.capacidadDePagoEnCuotas ? true : false;
+        return puedeOno;
      }
 }
 module.exports = concesionaria;

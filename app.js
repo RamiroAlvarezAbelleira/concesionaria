@@ -43,6 +43,14 @@ let concesionaria = {
            ganancias.push(autos.precio);
         })
         return ganancias;
+     },
+     
+     totalDeVentas: function() {
+        let ganancias = this.listaDeVentas();
+        let gananciasTotales = ganancias.reduce(function(valorAnterior, valorActual) {
+           return valorAnterior + valorActual;
+        }, 0);
+        return gananciasTotales;
      }
 }
 module.exports = concesionaria;

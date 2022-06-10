@@ -56,6 +56,14 @@ let concesionaria = {
      puedeComprar: function(auto, persona) {
         let puedeOno = auto.precio <= persona.capacidadDePagoTotal && (auto.precio / auto.cuotas) <= persona.capacidadDePagoEnCuotas ? true : false;
         return puedeOno;
-     }
+     },
+
+     autosQuePuedeComprar: function(persona) {
+      let autosDisponibles = this.autosParaLaVenta();
+      let autosComprables = autosDisponibles.filter((auto) => {
+         return this.puedeComprar(auto, persona) == true;
+      });
+      return autosComprables;
+   }
 }
 module.exports = concesionaria;
